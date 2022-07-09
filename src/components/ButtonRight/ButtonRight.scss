@@ -1,0 +1,17 @@
+button {
+  border-radius: 40%;
+  background: none;
+  color: currentColor;
+  border: none;
+  padding: 0.5px;
+  height: 6rem;
+  aspect-ratio: 1/1;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 250ms ease;
+}
+
+button:active {
+  transform: translateY(0.25rem);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
