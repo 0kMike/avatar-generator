@@ -4,6 +4,20 @@ header {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 4rem;
+  height: 3rem;
   background: none;
+
+  section {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    button: {
+      height: 2rem;
+      aspect-ratio: 1/1;
+      box-shadow: none;
+    }
+  }
 }

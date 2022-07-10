@@ -1,6 +1,7 @@
 import './App.scss';
 import ButtonLeft from './components/ButtonLeft/ButtonLeft';
 import ButtonRight from './components/ButtonRight/ButtonRight';
+import Header from './components/Header/Header';
 
 function App() {
   if (
@@ -16,7 +17,7 @@ function App() {
 
   return (
     <>
-      <header />
+      <Header />
       <main>
         <section>
           <div id='left-button-wrapper'>
