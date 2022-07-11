@@ -1,13 +1,10 @@
 import './Header.scss';
 export default function Header() {
   const darkModeClickHandler = () => {
-    if (
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    ) {
-      document.documentElement.classList.add('dark');
-    } else {
+    if (document.documentElement.classList.contains('dark')) {
       document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
     }
   };
 
