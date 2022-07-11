@@ -1,4 +1,5 @@
 import './Header.scss';
+
 export default function Header() {
   const darkModeClickHandler = () => {
     if (document.documentElement.classList.contains('dark')) {
@@ -13,7 +14,7 @@ export default function Header() {
       <section></section>
       <section></section>
       <section>
-        <button onClick={darkModeClickHandler}>
+        <button className='dark-mode-button' onClick={darkModeClickHandler}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className='h-6 w-6'

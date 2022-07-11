@@ -1,0 +1,17 @@
+export const backGroundColors: string[] = [
+    '#ffffff',
+    '#777777',
+    '#000000',
+    '#ff0000',
+    '#ff7700',
+    '#ffff00',
+    '#77ff00',
+    '#00ff00',
+    '#00ff77',
+    '#00ffff',
+    '#0077ff',
+    '#0000ff',
+    '#7700ff',
+    '#ff00ff',
+    '#ff0077',
+]

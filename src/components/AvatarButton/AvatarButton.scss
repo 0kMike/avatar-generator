@@ -1,8 +1,8 @@
-button {
-  border-radius: 40%;
+.avatar-button {
+  border-radius: 0.5rem;
   background: none;
   color: currentColor;
-  border: none;
+  border: 1px solid rgba(100, 100, 100, 1);
   padding: 0.5px;
   height: 3rem;
   aspect-ratio: 1/1;
@@ -11,7 +11,15 @@ button {
   transition: all 250ms ease;
 }
 
-button:active {
+.avatar-button:active {
   transform: translateY(0.25rem);
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-button:hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 1;
 }
