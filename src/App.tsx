@@ -2,6 +2,11 @@ import './App.scss';
 import Header from './components/Header/Header';
 import AvatarButton from './components/AvatarButton/AvatarButton';
 import { createRef, useEffect, useRef, useState } from 'react';
+import { hairAssets } from './providers/hair.provider';
+import { eyesAssets } from './providers/eyes.provider';
+import { noseAssets } from './providers/nose.provider';
+import { lipsAssets } from './providers/lips.provider';
+import { skinAssets } from './providers/skin.provider';
 import { backGroundColors } from './providers/backgroundColor.provider';
 
 export type DirectionType = 'right' | 'left';
@@ -14,7 +19,12 @@ export type AvatarSectionType =
   | 'background';
 
 function App() {
-  const [backgroundColorIndex, setBackgroundColorIndex] = useState(0);
+  const [hairIndex, setHairIndex] = useState(0);
+  const [eyesIndex, setEyesIndex] = useState(0);
+  const [noseIndex, setNoseIndex] = useState(0);
+  const [lipsIndex, setLipsIndex] = useState(0);
+  const [skinIndex, setSkinIndex] = useState(0);
+  const [backgroundIndex, setBackgroundIndex] = useState(0);
 
   if (
     window.matchMedia &&
@@ -25,42 +35,166 @@ function App() {
 
   const canvasElement = createRef<HTMLCanvasElement>();
 
+  const drawSingleAsset = (part: string, index: number) => {
+    if (!canvasElement.current) {
+      return;
+    }
+    const width = canvasElement.current.width;
+    const height = canvasElement.current.height;
+    const context = canvasElement!.current!.getContext('2d');
+
+    if (!context) {
+      return;
+    }
+
+    let assetArray;
+    switch (part) {
+      case 'skin':
+        assetArray = skinAssets;
+        break;
+      case 'lips':
+        assetArray = lipsAssets;
+        break;
+      case 'nose':
+        assetArray = noseAssets;
+        break;
+      case 'eyes':
+        assetArray = eyesAssets;
+        break;
+      case 'hair':
+        assetArray = hairAssets;
+        break;
+      default:
+        assetArray = skinAssets;
+    }
+
+    const image = new Image();
+    image.src = `src/assets/avatarParts/${part}/${assetArray[index]}`;
+
+    image.onload = () => {
+      context.drawImage(image, 0, 0, width, height);
+    };
+  };
+
+  const drawAssetsToCanvas = () => {
+    if (!canvasElement.current) {
+      return;
+    }
+    const context = canvasElement!.current!.getContext('2d');
+    if (!context) {
+      return;
+    }
+    context.clearRect(
+      0,
+      0,
+      canvasElement.current.width,
+      canvasElement.current.height
+    );
+
+    drawSingleAsset('skin', skinIndex);
+    drawSingleAsset('lips', lipsIndex);
+    drawSingleAsset('nose', noseIndex);
+    drawSingleAsset('eyes', eyesIndex);
+    drawSingleAsset('hair', hairIndex);
+  };
+
   const buttonClickHandler = (
     direction: DirectionType,
     section: AvatarSectionType
   ) => {
     switch (section) {
-      case 'eyes':
-        console.log('EYES');
+      case 'hair':
+        if (direction === 'left') {
+          if (hairIndex > 0) {
+            setHairIndex(hairIndex - 1);
+          } else {
+            setHairIndex(hairAssets.length - 1);
+          }
+        } else if (direction === 'right') {
+          if (hairIndex < hairAssets.length - 1) {
+            setHairIndex(hairIndex + 1);
+          } else {
+            setHairIndex(0);
+          }
+        }
         break;
       case 'eyes':
-        console.log('EYES');
+        if (direction === 'left') {
+          if (eyesIndex > 0) {
+            setEyesIndex(eyesIndex - 1);
+          } else {
+            setEyesIndex(eyesAssets.length - 1);
+          }
+        } else if (direction === 'right') {
+          if (eyesIndex < eyesAssets.length - 1) {
+            setEyesIndex(eyesIndex + 1);
+          } else {
+            setEyesIndex(0);
+          }
+        }
         break;
-      case 'eyes':
-        console.log('EYES');
+      case 'nose':
+        if (direction === 'left') {
+          if (noseIndex > 0) {
+            setNoseIndex(noseIndex - 1);
+          } else {
+            setNoseIndex(noseAssets.length - 1);
+          }
+        } else if (direction === 'right') {
+          if (noseIndex < noseAssets.length - 1) {
+            setNoseIndex(noseIndex + 1);
+          } else {
+            setNoseIndex(0);
+          }
+        }
         break;
-      case 'eyes':
-        console.log('EYES');
+      case 'lips':
+        if (direction === 'left') {
+          if (lipsIndex > 0) {
+            setLipsIndex(lipsIndex - 1);
+          } else {
+            setLipsIndex(lipsAssets.length - 1);
+          }
+        } else if (direction === 'right') {
+          if (lipsIndex < lipsAssets.length - 1) {
+            setLipsIndex(lipsIndex + 1);
+          } else {
+            setLipsIndex(0);
+          }
+        }
         break;
-      case 'eyes':
-        console.log('EYES');
+      case 'skin':
+        if (direction === 'left') {
+          if (skinIndex > 0) {
+            setSkinIndex(skinIndex - 1);
+          } else {
+            setSkinIndex(skinAssets.length - 1);
+          }
+        } else if (direction === 'right') {
+          if (skinIndex < skinAssets.length - 1) {
+            setSkinIndex(skinIndex + 1);
+          } else {
+            setSkinIndex(0);
+          }
+        }
         break;
       case 'background':
         if (direction === 'left') {
-          if (backgroundColorIndex > 0) {
-            setBackgroundColorIndex(backgroundColorIndex - 1);
+          if (backgroundIndex > 0) {
+            setBackgroundIndex(backgroundIndex - 1);
           } else {
-            setBackgroundColorIndex(backGroundColors.length - 1);
+            setBackgroundIndex(backGroundColors.length - 1);
           }
         } else if (direction === 'right') {
-          if (backgroundColorIndex < backGroundColors.length - 1) {
-            setBackgroundColorIndex(backgroundColorIndex + 1);
+          if (backgroundIndex < backGroundColors.length - 1) {
+            setBackgroundIndex(backgroundIndex + 1);
           } else {
-            setBackgroundColorIndex(0);
+            setBackgroundIndex(0);
           }
         }
         break;
     }
+    drawAssetsToCanvas();
   };
 
   return (
@@ -97,7 +231,7 @@ function App() {
           <canvas
             ref={canvasElement}
             style={{
-              backgroundColor: backGroundColors[backgroundColorIndex],
+              backgroundColor: backGroundColors[backgroundIndex],
             }}></canvas>
           <div className='button-wrapper'>
             <AvatarButton
