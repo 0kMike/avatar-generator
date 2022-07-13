@@ -2,7 +2,7 @@ import './App.scss';
 import Header from './components/Header/Header';
 import AvatarButton from './components/AvatarButton/AvatarButton';
 import { createRef, useEffect, useRef, useState } from 'react';
-import { backGroundColors } from './providers/backfroundColor.provider';
+import { backGroundColors } from './providers/backgroundColor.provider';
 
 export type DirectionType = 'right' | 'left';
 export type AvatarSectionType =
