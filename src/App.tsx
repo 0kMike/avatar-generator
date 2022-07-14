@@ -1,7 +1,7 @@
 import './App.scss';
 import Header from './components/Header/Header';
 import AvatarButton from './components/AvatarButton/AvatarButton';
-import { createRef, useEffect, useRef, useState } from 'react';
+import { createRef } from 'react';
 import { hairAssets } from './providers/hair.provider';
 import { eyesAssets } from './providers/eyes.provider';
 import { noseAssets } from './providers/nose.provider';
@@ -19,12 +19,12 @@ export type AvatarSectionType =
   | 'background';
 
 function App() {
-  const [hairIndex, setHairIndex] = useState(0);
-  const [eyesIndex, setEyesIndex] = useState(0);
-  const [noseIndex, setNoseIndex] = useState(0);
-  const [lipsIndex, setLipsIndex] = useState(0);
-  const [skinIndex, setSkinIndex] = useState(0);
-  const [backgroundIndex, setBackgroundIndex] = useState(0);
+  let hairIndex = 0;
+  let eyesIndex = 0;
+  let noseIndex = 0;
+  let lipsIndex = 0;
+  let skinIndex = 0;
+  let backgroundIndex = 0;
 
   if (
     window.matchMedia &&
@@ -106,90 +106,90 @@ function App() {
       case 'hair':
         if (direction === 'left') {
           if (hairIndex > 0) {
-            setHairIndex(hairIndex - 1);
+            hairIndex = hairIndex - 1;
           } else {
-            setHairIndex(hairAssets.length - 1);
+            hairIndex = hairAssets.length - 1;
           }
         } else if (direction === 'right') {
           if (hairIndex < hairAssets.length - 1) {
-            setHairIndex(hairIndex + 1);
+            hairIndex = hairIndex + 1;
           } else {
-            setHairIndex(0);
+            hairIndex = 0;
           }
         }
         break;
       case 'eyes':
         if (direction === 'left') {
           if (eyesIndex > 0) {
-            setEyesIndex(eyesIndex - 1);
+            eyesIndex = eyesIndex - 1;
           } else {
-            setEyesIndex(eyesAssets.length - 1);
+            eyesIndex = eyesAssets.length - 1;
           }
         } else if (direction === 'right') {
           if (eyesIndex < eyesAssets.length - 1) {
-            setEyesIndex(eyesIndex + 1);
+            eyesIndex = eyesIndex + 1;
           } else {
-            setEyesIndex(0);
+            eyesIndex = 0;
           }
         }
         break;
       case 'nose':
         if (direction === 'left') {
           if (noseIndex > 0) {
-            setNoseIndex(noseIndex - 1);
+            noseIndex = noseIndex - 1;
           } else {
-            setNoseIndex(noseAssets.length - 1);
+            noseIndex = noseAssets.length - 1;
           }
         } else if (direction === 'right') {
           if (noseIndex < noseAssets.length - 1) {
-            setNoseIndex(noseIndex + 1);
+            noseIndex = noseIndex + 1;
           } else {
-            setNoseIndex(0);
+            noseIndex = 0;
           }
         }
         break;
       case 'lips':
         if (direction === 'left') {
           if (lipsIndex > 0) {
-            setLipsIndex(lipsIndex - 1);
+            lipsIndex = lipsIndex - 1;
           } else {
-            setLipsIndex(lipsAssets.length - 1);
+            lipsIndex = lipsAssets.length - 1;
           }
         } else if (direction === 'right') {
           if (lipsIndex < lipsAssets.length - 1) {
-            setLipsIndex(lipsIndex + 1);
+            lipsIndex = lipsIndex + 1;
           } else {
-            setLipsIndex(0);
+            lipsIndex = 0;
           }
         }
         break;
       case 'skin':
         if (direction === 'left') {
           if (skinIndex > 0) {
-            setSkinIndex(skinIndex - 1);
+            skinIndex = skinIndex - 1;
           } else {
-            setSkinIndex(skinAssets.length - 1);
+            skinIndex = skinAssets.length - 1;
           }
         } else if (direction === 'right') {
           if (skinIndex < skinAssets.length - 1) {
-            setSkinIndex(skinIndex + 1);
+            skinIndex = skinIndex + 1;
           } else {
-            setSkinIndex(0);
+            skinIndex = 0;
           }
         }
         break;
       case 'background':
         if (direction === 'left') {
           if (backgroundIndex > 0) {
-            setBackgroundIndex(backgroundIndex - 1);
+            backgroundIndex = backgroundIndex - 1;
           } else {
-            setBackgroundIndex(backGroundColors.length - 1);
+            backgroundIndex = backGroundColors.length - 1;
           }
         } else if (direction === 'right') {
           if (backgroundIndex < backGroundColors.length - 1) {
-            setBackgroundIndex(backgroundIndex + 1);
+            backgroundIndex = backgroundIndex + 1;
           } else {
-            setBackgroundIndex(0);
+            backgroundIndex = 0;
           }
         }
         break;
